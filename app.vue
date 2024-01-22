@@ -14,5 +14,6 @@ onMounted(async () => {
   <div v-else>
     <AppHeader />
     <NuxtPage />
+    <AppFooter />
   </div>
 </template>

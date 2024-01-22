@@ -11,8 +11,8 @@
             <p>Le code source est disponible sur mon <a class="text-primary" href="https://github.com/mael501/manycocktails"
                     target="_blank">GitHub</a>.</p>
         </div>
-        <CocktailsCarrousel />
         <Categories />
+        <CocktailsCarrousel />
     </main>
 </template>
 

@@ -1,17 +1,18 @@
 <script setup>
-import { listAlcoholicCocktails } from '@/api/cocktails'
-import { RouterLink } from 'vue-router';
+import { listNonAlcoholicCocktails } from '@/api/cocktails'
 
 const cocktails = ref([])
+const isLoading = ref(true)
 
 onMounted(async () => {
-    cocktails.value = await listAlcoholicCocktails()
+    cocktails.value = await listNonAlcoholicCocktails()
+    isLoading.value = false
 })
 </script>
 
 <template>
     <main>
-        <h2 class="text-4xl font-bold mb-8">Cocktails Alcoolisés</h2>
+        <h2 class="text-4xl font-bold mb-8">Cocktails Sans Alcool</h2>
         <ul>
             <NuxtLink v-for="cocktail in cocktails" :to="`/cocktail/${cocktail.idDrink}`" :key="cocktail.idDrink">
                 <li class="cocktail-item">
@@ -87,5 +88,4 @@ ul {
         height: 200px;
     }
 }
-
 </style>
