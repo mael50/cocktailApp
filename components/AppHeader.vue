@@ -1,6 +1,5 @@
 <script setup>
 const q = ref('')
-
 const colorMode = useColorMode();
 
 const isDark = computed({
@@ -15,19 +14,19 @@ const isDark = computed({
 
 <template>
     <header>
-        <img v-if="isDark" src="~/assets/logo_dark.svg" alt="Logo ManyCocktails" />
-        <img v-else src="~/assets/logo_light.svg" alt="Logo ManyCocktails" />
+        <img v-if="colorMode.value !== undefined && colorMode.value === 'dark'" src="~/assets/logo_dark.svg"
+            alt="Logo ManyCocktails" loading="lazy" />
+        <img v-else-if="colorMode.value !== undefined && colorMode.value === 'light'" src="~/assets/logo_light.svg"
+            alt="Logo ManyCocktails" loading="lazy" />
         <nav>
             <ULink to="/alcoholic" active-class="text-primary"
                 inactive-class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary"
-                style="font-size: 1.2rem;"
-                >
+                style="font-size: 1.2rem; font-weight: 800;">
                 Alcoolisées
             </ULink>
             <ULink to="/non-alcoholic" active-class="text-primary"
                 inactive-class="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary"
-                style="font-size: 1.2rem;"
-                >
+                style="font-size: 1.2rem; font-weight: 800;">
                 Sans alcool
             </ULink>
         </nav>
@@ -78,5 +77,37 @@ nav {
     display: flex;
     align-items: center;
     gap: 2rem;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        margin: 0 1rem;
+    }
+
+    img {
+        width: 10rem;
+        height: 10rem;
+        margin-bottom: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .right {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 </style>
